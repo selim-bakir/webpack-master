@@ -5,29 +5,9 @@ const webpack = require('webpack')
 const dev = process.env.NODE_ENV === "dev"
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-let cssLoaders =  [
-  dev ? 'style-loader' : MiniCssExtractPlugin.loader,
-  {loader : 'css-loader', options: {importLoaders: 1}}
-]
-
-if (!dev){
-  cssLoaders.push({
-      loader : 'postcss-loader',
-      options: {
-        plugins: (loader) =>[
-          require('autoprefixer')({
-            browsers: ["last 2 versions", 'ie > 8']
-          })
-        ]
-      }
-  })
-}
 
 let config = {
   devtool: dev ? 'cheap-eval-source-map' :  'source-map',
-  devServer: {
-    hot: true
-  },
   entry:  {
     main: './src/index.js',
     page2: './src/scripts/page2.js'
@@ -48,15 +28,32 @@ let config = {
       }, 
       {
         test: /\.css$/,
-        use: cssLoaders
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          ...cssLoaders,
+          dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader : 'css-loader', options: {importLoaders: 1}
+          },
+          {
+            loader : 'postcss-loader',
+            options: {
+              plugins: (loader) =>[
+                require('autoprefixer')({
+                  browsers: ["last 2 versions", 'ie > 8']
+                })
+              ]
+            }
+          },
           'sass-loader'
-        ]
-      }
+        ],
+      },
+      // {
+      //   test: /\.html$/,
+      //   loader: "raw-loader"
+      // }
     ]
   },
   plugins: [
@@ -70,12 +67,17 @@ let config = {
       template: 'src/page2.html',
       chunks: ['page2']
     }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      disable: dev
-    }),
     new CleanWebpackPlugin(__dirname + '/dist', { allowExternal: true }),
+    new MiniCssExtractPlugin({      
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
   ],
+  devServer: {
+    hot: true
+  }
 }
 
 module.exports = config;

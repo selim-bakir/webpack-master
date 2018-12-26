@@ -1,0 +1,10 @@
+@import url('./components/search.scss');
+$background: blue;
+
+body{
+    background-color : $background;
+    transform: translateX(20px);
+    h1{
+        color: red;
+    }
+}
