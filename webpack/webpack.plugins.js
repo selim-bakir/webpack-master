@@ -2,6 +2,7 @@
  const CleanWebpackPlugin = require('clean-webpack-plugin')
  const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
  const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+ var LiveReloadPlugin = require('webpack-livereload-plugin');
 
  module.exports = [
      new HtmlWebpackPlugin({
