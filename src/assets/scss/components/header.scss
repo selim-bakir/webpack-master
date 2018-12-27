@@ -1,0 +1,9 @@
+body{    
+    background : $background;
+    // background-image : url($img-path + 'test-img.jpg');
+    transform: translateX(20px);
+    text-align: center;
+    h1{
+        color: $h1-color;
+    }
+}
