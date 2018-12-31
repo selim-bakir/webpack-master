@@ -15,6 +15,7 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
+    "@drewbot/sass-flexbox-grid": "^2.0.7",
     "autoprefixer": "^9.4.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",

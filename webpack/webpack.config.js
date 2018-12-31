@@ -90,11 +90,15 @@ let config = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
+              includePaths: [
+                require('path').resolve(__dirname, 'node_modules')
+              ]
             },
 
           }
         ]
       },
+
       {
         test: /\.(png|jpg|gif)$/,
         use: [{

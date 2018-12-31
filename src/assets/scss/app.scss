@@ -1,6 +1,7 @@
 @import './vars.scss';
 @import './fonts.scss';
-@import '~flexboxgrid/dist/flexboxgrid.min.css';
+@import ' ~@drewbot/sass-flexbox-grid/public/sass-flexbox/main.min';
+// @import ' ~flexboxgrid/dist/flexboxgrid.min';
 ///////////////////////////////////////@website-variables
 
 @import './components/header.scss';
