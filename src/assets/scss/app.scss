@@ -1,7 +1,5 @@
-@import './vars.scss';
-@import './fonts.scss';
-@import ' ~@drewbot/sass-flexbox-grid/public/sass-flexbox/main.min';
-// @import ' ~flexboxgrid/dist/flexboxgrid.min';
-///////////////////////////////////////@website-variables
+////// INCLUDE VENDOR IN ALL SCSS FILE ///////
+@import './vendor.scss';
+/////////////////////////////////////////////
 
 @import './components/header.scss';

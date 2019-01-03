@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const path = require('path')
 const pluginsConfig = require("./webpack.plugins.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
@@ -31,7 +32,6 @@ if (dev) {
 //START CONFIG
 let config = {
   devtool: dev ? 'cheap-eval-source-map' : false,
-
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
     host: "localhost",
@@ -39,6 +39,11 @@ let config = {
     open: true,
     hot: true,
 
+  },
+  resolve: {
+    alias: {
+      'assets': path.resolve('src/assets/')
+    }
   },
   watch: true,
   entry: {
