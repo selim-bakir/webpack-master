@@ -83,6 +83,11 @@ let config = {
   },
   module: {
     rules: [{
+      test: /\.(html)$/,
+      use: {
+        loader: 'html-loader?root=./assets/images&name=./views/[name].[ext]',
+      }
+    },{
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader"
