@@ -8,7 +8,7 @@
      new HtmlWebpackPlugin({
          filename: 'index.html',
          template: 'src/index.html',
-         chunks: ['app']
+         chunks: ['index']
      }),
      new HtmlWebpackPlugin({
          filename: 'page2.html',

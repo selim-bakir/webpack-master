@@ -11,7 +11,7 @@ const dev = false;
 let cssLoaders = [
   dev ? {loader: 'style-loader',options: { sourceMap: true, convertToAbsoluteUrls: true,} } :  MiniCssExtractPlugin.loader,
   {
-    loader: 'css-loader'
+    loader: 'css-loader',options: { sourceMap: true,}
   }
 ]
 if (dev) {
@@ -31,23 +31,27 @@ if (dev) {
 
 //START CONFIG
 let config = {
-  devtool: dev ? 'cheap-eval-source-map' : false,
+  // devtool: dev ? 'cheap-eval-source-map' : false,
   devServer: {
-    contentBase: path.resolve(__dirname, "dist"),
-    host: "localhost",
+    contentBase: path.resolve(__dirname, "src"),
+    host: "172.19.0.104",
     port: "8090",
+    disableHostCheck: true,
     open: true,
     hot: true,
 
   },
   resolve: {
     alias: {
-      'assets': path.resolve('src/assets/')
+      'assets': path.resolve('src/assets/'),
+      'components-scss': path.resolve('src/assets/scss/components/'),
+      'pages-scss': path.resolve('src/assets/scss/pages/'),
+      'vendors-scss': path.resolve('src/assets/scss/vendors/'),
     }
   },
   watch: true,
   entry: {
-    app: ['./src/assets/scss/app.scss', './src/app.js'],
+    index: ['./src/assets/scss/app.scss', './src/assets/scripts/index.js'],
     page2: ['./src/assets/scss/pages/page2.scss', './src/assets/scripts/page2.js']
   },
 

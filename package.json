@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production --config ./webpack/webpack.config.js",
-    "dev": "webpack-dev-server --mode=development --hot --config ./webpack/webpack.config.js",
+    "dev": "webpack-dev-server --mode=development --hot --config ./webpack/webpack.config.js --host 172.19.0.104",
     "start": "npm run dev"
   },
   "keywords": [],

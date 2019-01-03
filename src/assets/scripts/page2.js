@@ -1,5 +1,9 @@
-function log(value) {
+
+export function test(value) {
     console.log(value)
 }
 
-export default log;
+export function doubleLog(value){
+    console.log(value)    
+    console.log(value)
+}

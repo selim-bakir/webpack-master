@@ -1,5 +1,8 @@
-@import '../vendor.scss';
-@import '../components/header.scss';
+////// INCLUDE VENDOR IN ALL SCSS FILE ///////
+@import '~vendors-scss/vendor.scss';
+/////////////////////////////////////////////
+
+@import '~components-scss/header.scss';
 
 body{
     background-color: grey;

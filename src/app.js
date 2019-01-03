@@ -1,3 +1,7 @@
-import log from './assets/scripts/page2.js'
+import test from './assets/scripts/page2'
 
-log("IMPORTED FUNCTION FROM PAGE2JS")
+console.log('FONCTION LOG HOME');
+
+test("Mon log de home.js");
+
+test("IMPORTED FUNCTION FROM PAGE2JS")
