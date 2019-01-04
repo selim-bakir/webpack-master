@@ -1,8 +1,12 @@
- const HtmlWebpackPlugin = require('html-webpack-plugin')
- const CleanWebpackPlugin = require('clean-webpack-plugin')
- const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
- const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+ const path = require('path');
+ const HtmlWebpackPlugin = require('html-webpack-plugin');
+ const CleanWebpackPlugin = require('clean-webpack-plugin');
+ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
  const LiveReloadPlugin = require('webpack-livereload-plugin');
+ const NotifierPlugin = require('friendly-errors-webpack-plugin');
+ const notifier = require('node-notifier');
+ const ICON = path.resolve(__dirname, 'icon.png');
 
  module.exports = [
      new HtmlWebpackPlugin({
@@ -22,5 +26,20 @@
          allowExternal: true
      }),
      new FriendlyErrorsWebpackPlugin(),
-     new LiveReloadPlugin()
- ]
+     new LiveReloadPlugin(),
+     new NotifierPlugin({
+        onErrors: (severity, errors) => {
+          if (severity !== 'error') {
+            return;
+          }
+          const error = errors[0];
+          notifier.notify({
+            title: "Webpack error",
+            message: severity + ': ' + error.name,
+            subtitle: error.file || '',
+            icon: ICON
+          });
+        }
+      }),
+    
+ ];

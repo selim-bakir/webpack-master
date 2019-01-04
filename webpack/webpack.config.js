@@ -7,7 +7,6 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const dev = false;
 
 //CSS LOADER
-
 let cssLoaders = [
   dev ? {loader: 'style-loader',options: { sourceMap: true, convertToAbsoluteUrls: true,} } :  MiniCssExtractPlugin.loader,
   {
@@ -31,15 +30,15 @@ if (dev) {
 
 //START CONFIG
 let config = {
-  // devtool: dev ? 'cheap-eval-source-map' : false,
+  devtool: dev ? 'cheap-eval-source-map' : false,
   devServer: {
     contentBase: path.resolve(__dirname, "src"),
-    host: "172.19.0.104",
+    host: "localhost",
     port: "8090",
-    disableHostCheck: true,
+    disableHostCheck: false,
     open: true,
     hot: true,
-
+    quiet: true,
   },
   resolve: {
     alias: {
@@ -90,7 +89,10 @@ let config = {
     },{
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        use : [
+          "babel-loader",
+          {loader : "eslint-loader", options: {fix: true}}
+        ]
       },
       {
         test: /\.css$/,

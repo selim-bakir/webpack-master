@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "webpack -w --progress --colors --config ./webpack/webpack-test.config.js",
     "build": "webpack --mode=production --config ./webpack/webpack.config.js",
-    "dev": "webpack-dev-server --mode=development --hot --config ./webpack/webpack.config.js --host 172.19.0.104",
+    "dev": "webpack-dev-server --mode=development --hot --config ./webpack/webpack.config.js",
     "start": "npm run dev"
   },
   "keywords": [],
@@ -20,9 +20,12 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
     "chokidar": "^2.0.4",
     "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^2.1.0",
+    "eslint": "^5.11.1",
+    "eslint-loader": "^2.1.1",
     "express": "^4.16.4",
     "file-loader": "^3.0.1",
     "friendly-errors-webpack-plugin": "^1.7.0",
@@ -31,6 +34,8 @@
     "meyer-reset-sass": "^1.0.1",
     "mini-css-extract-plugin": "^0.5.0",
     "mixin-loader": "^2.0.3",
+    "mocha": "^5.2.0",
+    "node-notifier": "^5.3.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
@@ -43,7 +48,9 @@
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.14",
-    "webpack-livereload-plugin": "^2.2.0"
+    "webpack-livereload-plugin": "^2.2.0",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
     "flexboxgrid": "^6.3.1"
