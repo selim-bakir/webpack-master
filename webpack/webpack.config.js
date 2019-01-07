@@ -1,7 +1,7 @@
-const webpack = require('webpack')
-const path = require('path')
+const webpack = require('webpack');
+const path = require('path');
 const pluginsConfig = require("./webpack.plugins.js");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const dev = false;
@@ -20,7 +20,7 @@ let cssLoaders = [
             sourceMap: true,
         }
     }
-]
+];
 if (dev) {
     cssLoaders.push({
         loader: 'postcss-loader',
@@ -31,7 +31,7 @@ if (dev) {
                 })
             ]
         }
-    })
+    });
 }
 
 
@@ -92,7 +92,10 @@ let config = {
         rules: [{
                 test: /\.(html)$/,
                 use: {
-                    loader: 'html-loader?root=./assets/images&name=./views/[name].[ext]',
+                    loader: 'html-loader',
+                    options: {
+                        interpolate: true
+                    }
                 }
             }, {
                 test: /\.js$/,
@@ -150,6 +153,6 @@ let config = {
         ]
     },
     plugins: pluginsConfig,
-}
+};
 
 module.exports = config;

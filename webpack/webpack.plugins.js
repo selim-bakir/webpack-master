@@ -21,7 +21,6 @@
      }),
      new MiniCssExtractPlugin({
          filename: "css/[name].css",
-        //  publicPath: path.resolve(__dirname, '/dist/css/')
      }),
      new CleanWebpackPlugin(__dirname + '../../dist', {
          allowExternal: true
